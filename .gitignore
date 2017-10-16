@@ -14,8 +14,11 @@ develop-eggs/
 dist/
 downloads/
 .idea/
-*/idea/*
-*/idea/
+/.idea/
+.idea/*
+
+
+
 eggs/
 .eggs/
 lib/
