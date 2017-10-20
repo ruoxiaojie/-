@@ -17,7 +17,7 @@ authenticity_token = b1.find(attrs={'name': 'authenticity_token'}).get('value')
 # cookie返回给你
 r1_cookie_dict = r1.cookies.get_dict()
 # print(authenticity_token)
-# print(r1_cookie_dict)
+print(r1_cookie_dict)
 
 '''
 utf8:✓
@@ -57,4 +57,22 @@ r3 = requests.get(
 )
 
 print(r3.text)
-# print(r3.content)
+print(r3.content)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
