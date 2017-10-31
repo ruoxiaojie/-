@@ -24,8 +24,8 @@ class Sp1Pipeline(object):
 
     def process_item(self, item, spider):
         if spider.name == 'chouti':  #判断这个爬虫走这个   多爬虫
+            self.file_obj.write(item['title'] + "\t")
             self.file_obj.write(item['url'] + "\r")
-            self.file_obj.write(item['title'] + "\n")
         return item
 
     def open_spider(self, spider):
@@ -34,7 +34,7 @@ class Sp1Pipeline(object):
         :param spider:
         :return:
         """
-        print('准备,打开文件')
+        print('open a file start ***')
         self.file_obj = open(self.file_path,mode='a+')
 
     def close_spider(self, spider):
@@ -44,4 +44,4 @@ class Sp1Pipeline(object):
         :return:
         """
         self.file_obj.close()
-        print('完成,关闭文件')
+        print('over close file')

@@ -90,4 +90,4 @@ ITEM_PIPELINES = {
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
 MMMM='chouti.txt'
-FEED_EXPORT_ENCODING = 'utf-8'
+# FEED_EXPORT_ENCODING = 'utf-8'
