@@ -1,0 +1,4 @@
+cd /sp1
+scrapy crawl chouti --nolog
+
+爬取url深度  settings.py   DEPTH_LIMIT

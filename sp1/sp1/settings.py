@@ -89,5 +89,5 @@ ITEM_PIPELINES = {
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
-MMMM='chouti.txt'
-# FEED_EXPORT_ENCODING = 'utf-8'
+PATH='chouti.txt'
+DEPTH_LIMIT = 2 #(查找URL层次)

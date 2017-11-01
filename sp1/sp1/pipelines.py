@@ -19,7 +19,7 @@ class Sp1Pipeline(object):
         :param crawler:
         :return:
         """
-        val = crawler.settings.get('MMMM')
+        val = crawler.settings.get('PATH')
         return cls(val)
 
     def process_item(self, item, spider):
