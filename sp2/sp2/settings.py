@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for sp1 project
+# Scrapy settings for sp2 project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,14 +9,14 @@
 #     http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'sp1'
+BOT_NAME = 'sp2'
 
-SPIDER_MODULES = ['sp1.spiders']
-NEWSPIDER_MODULE = 'sp1.spiders'
+SPIDER_MODULES = ['sp2.spiders']
+NEWSPIDER_MODULE = 'sp2.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'sp1 (+http://www.yourdomain.com)'
+#USER_AGENT = 'sp2 (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -47,13 +47,13 @@ ROBOTSTXT_OBEY = True
 # Enable or disable spider middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'sp1.middlewares.Sp1SpiderMiddleware': 543,
+#    'sp2.middlewares.Sp2SpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'sp1.middlewares.MyCustomDownloaderMiddleware': 543,
+#    'sp2.middlewares.MyCustomDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -65,7 +65,7 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'sp1.pipelines.Sp1Pipeline': 300,
+   'sp2.pipelines.Sp2Pipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -88,6 +88,7 @@ ITEM_PIPELINES = {
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
-
 PATH='chouti.txt'
 # DEPTH_LIMIT = 1 #(查找URL层次)
+
+DUPEFILTER_CLASS = 'sp2.my_filter.MyDupeFilter'
