@@ -56,6 +56,13 @@ ROBOTSTXT_OBEY = True
 #    'sp2.middlewares.MyCustomDownloaderMiddleware': 543,
 #}
 
+#下载中间件 后面的数字  小于1000
+DOWNLOADER_MIDDLEWARES = {
+   'sp2.download_middlewares.DownMiddleware1': 543,
+   'sp2.download_middlewares.DownMiddleware2': 544,
+}
+
+
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
 #EXTENSIONS = {
@@ -90,5 +97,6 @@ ITEM_PIPELINES = {
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 PATH='chouti.txt'
 # DEPTH_LIMIT = 1 #(查找URL层次)
+COMMANDS_MODULE = "sp2.commands"
 
-DUPEFILTER_CLASS = 'sp2.my_filter.MyDupeFilter'
+#DUPEFILTER_CLASS = 'sp2.my_filter.MyDupeFilter'

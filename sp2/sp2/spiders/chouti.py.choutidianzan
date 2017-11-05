@@ -1,0 +1,70 @@
+# -*- coding: utf-8 -*-
+import scrapy
+from scrapy.http import Request
+import scrapy
+import io
+import sys
+import os,json
+from scrapy.selector import HtmlXPathSelector
+from ..items import Sp2Item
+from scrapy.http import Request
+from scrapy.http.cookies import CookieJar
+
+# sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='gb18030')
+
+
+class ChoutiSpider(scrapy.Spider):
+    name = 'chouti'
+    allowed_domains = ['chouti.com']
+    cookies = None
+    cookie_dict = {}
+
+    # #start_requests 在父类里scrapy.Spider
+    def start_requests(self):
+        yield Request(url="http://dig.chouti.com/", callback=self.index,dont_filter=True)
+
+    def index(self, response):
+        #获取首页信息
+        cookie_jar = CookieJar()
+        cookie_jar.extract_cookies(response,response.request)
+        self.cookies = cookie_jar
+        print('首页所有cookie对象',cookie_jar)
+        # print('cookie详细')
+        for k,v in cookie_jar._cookies.items():
+            for i,j in v.items():
+                for m,n in j.items():
+                    self.cookie_dict[m]=n.value
+                    #print(m,n.value)
+
+        #发送post 输入账号密码登入  （携带Cookie
+        yield Request(
+            url='http://dig.chouti.com/login',
+            method='POST',
+            headers={'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'},
+            body='phone=8613581999317&password=qwe123&oneMonth=1',
+            cookies=self.cookie_dict,
+            callback=self.check_login
+        )
+
+    def check_login(self,response):
+        #如果登入成功，可以执行点赞
+        #print(response.text)
+        data_dict = json.loads(response.text)
+        code = data_dict['result']['code']
+        if code == '9999':
+            yield Request(url='http://dig.chouti.com/',callback=self.pager,dont_filter=True)
+
+    def pager(self,response):
+        hxs = HtmlXPathSelector(response)
+        new_list = hxs.select('//div[@id="content-list"]/div[@class="item"]')
+        for new in new_list:
+            link_id = new.xpath('*/div[@class="part2"]/@share-linkid').extract_first()
+            yield Request(
+                url='http://dig.chouti.com/link/vote?linksId={0}'.format(link_id), #15059591
+                method='POST',
+                cookies=self.cookie_dict,
+                callback=self.do_favor_result
+            )
+
+    def do_favor_result(self,response):
+        print(response.text)
