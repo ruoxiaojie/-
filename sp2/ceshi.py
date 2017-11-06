@@ -1,22 +1,17 @@
 #!/usr/bin/python
 #Author:xiaojie
 # -*- coding:utf-8 -*-
-from scrapy.utils.request import request_fingerprint
-from scrapy.http import Request
 
-
-# obj = Request(url='http://www.baidu.com?a=2',headers={'Content_Type':'application/json'},callback=lambda x:x)
-# obj2 = Request(url='http://www.baidu.com?a=2',headers={'Content_Type':'application/text'},callback=lambda x:x)
+# from scrapy.http import Request
+# from scrapy.utils.request import request_fingerprint
 #
-# print(request_fingerprint(obj2,include_headers=['Content_Type']))
+# obj =Request(url='http://www.baidu.com',callback=lambda x:x)
 # v = request_fingerprint(obj)
 # print(v)
 
-
-
-
-
-
-
-
-
+l = [1,2,3,4]
+obj = iter(l)
+print(obj.__next__())
+print(obj.__next__())
+print(obj.__next__())
+print(obj.__next__())

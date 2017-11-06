@@ -16,6 +16,7 @@ class MyDupeFilter(object):
     def request_seen(self, request):
         # print(request.url,request.callback)
         # return True
+        #url去重
         fp = request_fingerprint(request)
         if fp in self.visited_url:
             return True
@@ -24,11 +25,11 @@ class MyDupeFilter(object):
 
     def open(self):
         pass
-        print('open replication')
+        #可以打开数据库
 
     def close(self, reason):
         pass
-        print('close replication')
+        # 可以关闭数据库
 
     def log(self, request, spider):
         pass

@@ -33,7 +33,7 @@ class Sp2Pipeline(object):
         :param spider:
         :return:
         """
-        print('open a file start ***')
+        #print('open a file start ***')
         self.file_obj = open(self.file_path,mode='a+')
 
     def close_spider(self, spider):
@@ -43,4 +43,4 @@ class Sp2Pipeline(object):
         :return:
         """
         self.file_obj.close()
-        print('over close file')
+        #print('over close file')
