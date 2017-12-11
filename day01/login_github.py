@@ -36,7 +36,7 @@ r2 = requests.post(
         'utf8': '✓',
         'authenticity_token': authenticity_token,
         'login': '475030894@qq.com',
-        'password': 'liu189458',
+        'password': 'liujiehahha',
 
     },
     cookies=r1_cookie_dict
